@@ -1,0 +1,38 @@
+// Brute Force, 45/58 test cases pass,  get Time limit exceeded 
+class Solution {  // Topic, Approach(Brute force), edge case, T.c, S.c
+    public int maxRotateFunction(int[] nums) {
+        int n=nums.length;
+        int summ =0;
+        for(int i=0; i<n; i++){
+            summ += nums[i] * i;
+
+        }
+        int max = summ;
+        int[] arrk=new int[n];
+        for(int i=0; i<n; i++){
+            arrk[i] = nums [i];
+        }
+        for(int i=1; i<n; i++){
+            int summ1 =0;       // to be updated 
+            arrk = rotatefun(arrk); // rotating 
+            for(int j=0; j<n; j++){
+                summ1 += arrk[j] * j;
+            }    
+            max = Math.max(summ1, max);    
+        }
+        return max;
+    }
+    public int[] rotatefun(int[] nums){
+        int n=nums.length;
+        int[] arrk=new int[n];
+        arrk[0]=nums[n-1];
+        for(int i=1; i<n; i++){
+            arrk[i] = nums[i-1];
+        }
+        return arrk;
+
+    }
+}
+
+
+
