@@ -36,3 +36,33 @@ class Solution {  // Topic, Approach(Brute force), edge case, T.c, S.c
 
 
 
+// Optimal 
+
+class Solution {  
+    public int maxRotateFunction(int[] nums) {
+        int n=nums.length;
+
+        int f = 0;
+        int summ = 0;
+
+        for(int i=0; i<n; i++){
+            summ += nums[i];
+            f += i * nums[i]; 
+        }
+
+        int max = f;
+
+        for(int i=1; i<n; i++){
+            f = f + summ - n*nums[n-i];        // Magic Formula 
+            max = Math.max(max, f);
+        }
+        return max;
+        
+    }
+}
+
+// Time complexity : O(n)
+// Space Complexity : O(1)
+
+
+
