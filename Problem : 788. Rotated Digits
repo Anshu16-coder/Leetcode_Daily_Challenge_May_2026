@@ -1,3 +1,13 @@
+// Problem: Rotate Digits (2 May 2026)
+// Problem link: https://leetcode.com/problems/rotated-digits/?envType=daily-question&envId=2026-05-02
+
+// My Approach:(Brute Force)
+- Iterate from 1 to n and check each number individually.
+- Use an `isGood()` function to validate and rotate digits.
+- Digits 3, 4, and 7 are invalid after rotation.
+- Digits 2↔5 and 6↔9 change after rotation, while 0, 1, and 8 remain the same.
+- A number is good if the rotated number is different from the original number.
+
 class Solution {
     public int rotatedDigits(int n) {
         int countt = 0;
@@ -10,17 +20,17 @@ class Solution {
         
     }
     public boolean isGood(int i){
-        String str = Integer.toString(i);
+        String str = Integer.toString(i);   // Connvert int into String 
         int n = str.length();
         int res = 0;
         for(int j=0; j<n; j++){
-            char ch = str.charAt(j);
-            if(ch == '3' || ch == '4' || ch == '7'){
+            char ch = str.charAt(j);       // character at index j
+            if(ch == '3' || ch == '4' || ch == '7'){     
                 return false;
             }
             else{
                 if(ch == '0'){
-                    res = res * 10 + (ch - '0');
+                    res = res * 10 + (ch - '0');      // (ch - '0') direct convert ch to int for eg: ('4' - '0' )= 4
                 }
                 if(ch == '1'){
                     res = res * 10 + (ch - '0');
@@ -44,10 +54,13 @@ class Solution {
                 
         }
         return i != res;
-
-        
-
-        
-        
     }
 }
+
+// Time Complexity: O(n * digits)     
+// Space Complexity: O(1)
+
+
+
+
+
