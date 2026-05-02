@@ -1,0 +1,53 @@
+class Solution {
+    public int rotatedDigits(int n) {
+        int countt = 0;
+        for(int i=1; i<=n; i++){
+            if(isGood(i)){
+                countt++;
+            }
+        }
+        return countt;
+        
+    }
+    public boolean isGood(int i){
+        String str = Integer.toString(i);
+        int n = str.length();
+        int res = 0;
+        for(int j=0; j<n; j++){
+            char ch = str.charAt(j);
+            if(ch == '3' || ch == '4' || ch == '7'){
+                return false;
+            }
+            else{
+                if(ch == '0'){
+                    res = res * 10 + (ch - '0');
+                }
+                if(ch == '1'){
+                    res = res * 10 + (ch - '0');
+                }
+                if(ch == '8'){
+                    res = res * 10 + (ch - '0');
+                }
+                if(ch == '2'){
+                    res = res * 10 + 5;
+                }
+                if(ch == '5'){
+                    res = res * 10 + 2;
+                } 
+                if(ch == '6'){
+                    res = res * 10 + 9;
+                }  
+                if(ch == '9'){
+                    res = res * 10 + 6;
+                }
+            }      
+                
+        }
+        return i != res;
+
+        
+
+        
+        
+    }
+}
