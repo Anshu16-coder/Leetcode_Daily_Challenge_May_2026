@@ -1,0 +1,29 @@
+// Problem: Rotate String (3 May 2026)
+// Problem link: https://leetcode.com/problems/rotate-string/description/?envType=daily-question&envId=2026-05-03 
+
+// My Approach(Brute force)
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        int n = s.length();
+        int m = goal.length();
+        if(n != m){
+            return false;
+        }
+        String snew =s + s;     // Concate
+        for(int i=0; i<snew.length() - n + 1; i++){
+            String sub = snew.substring(i, i+n);   // substring
+            if(sub.equals(goal)){
+                return true;
+            }
+        }
+        return false;
+
+// Time Complexity: O(n*n)
+// Space Complexity: O(n) 
+
+
+        
+    
+
+    }
+}
