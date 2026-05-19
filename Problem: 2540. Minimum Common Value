@@ -1,0 +1,83 @@
+// Problem Statements : Minimum Common Value
+
+// My Approach 1st : HashSet
+
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+
+        HashSet<Integer> hs = new HashSet<>();
+        for(int i = 0; i < nums1.length; i++){
+            hs.add(nums1[i]);
+        }
+        for(int j = 0; j < nums2.length; j++){
+            if(hs.contains(nums2[j])){
+                return nums2[j];
+              
+            }
+        }
+        return -1;
+        
+    }
+}
+
+// Time Complexity : O(n)    length of nums1 + length of nums2 
+// Space Complexity : O(n)   HashSet stores nums1 (length of nums1)   
+
+
+// My Approach 2nd : Two Pointers
+// Bug
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        int i = 0;
+        int j = 0;
+        int m = nums1.length;
+        int n = nums2.length;
+        int maxx = Math.max(m, n);
+        for(int k = 0; k < maxx; k++){   // Bug : i and j may get out of Bound betrer use while loop 
+            if (nums1[i] == nums2[j]){
+                return nums1[i];
+            }
+            else if (nums1[i] < nums2[j]){
+                i++;
+            }
+            else if (nums1[i] > nums2[j]){
+                j++;
+            }
+            
+        }
+        return -1;
+
+
+        
+    }
+}
+// Time Complexity : O(n)  n = max of nums1 length and nums2 length
+// Space Complexity : O(1)
+Key Takeaway: Two-pointer problems almost always use while with dual boundary conditions, not a for loop with an artificial limit.
+
+// Optimal Solutions: 
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        int i = 0, j = 0;
+        while(i < nums1.length && j < nums2.length){
+            if(nums1[i] == nums2[j]){
+                return nums1[i];
+            }
+            else if(nums1[i] < nums2[j]){
+                i++;
+            }
+            else{
+                j++;
+            }
+        }
+        return -1;
+        
+
+        
+    }
+}
+// Time Complexity : O( m + n)  m = nums1 length and n = nums2 length
+// Space Complexity : O(1)
+
+
+
